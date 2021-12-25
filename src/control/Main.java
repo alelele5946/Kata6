@@ -3,8 +3,8 @@ package control;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.stream.Collectors;
-import toys.Car;
-import toys.Helicopter;
+import toyproducts.models.CarToy;
+import toyproducts.models.HelicopterToy;
 import toys.SerialNumberGenerator;
 import toys.ToyBusiness;
 
@@ -12,8 +12,8 @@ public class Main {
 
     public static void main(String[] args) {
         ToyBusiness business = new ToyBusiness();
-        ArrayList<Car> cars = new ArrayList<>();
-        ArrayList<Helicopter> helicopters = new ArrayList<>();
+        ArrayList<Toy> toys = new ArrayList<>();
+        
         
         
         
@@ -24,17 +24,17 @@ public class Main {
             switch (line){
                 case "car":
                     
-                    cars.add(business.createCar());
-                    System.out.println("Built cars:"+cars.stream()
-                            .map(c -> c.getSerialNumber().toString())).
+                    toys.add((CarToy)business.createToy(line));
+                    System.out.println("Built cars:"+toys.stream()
+                            .map(c -> c.toString())).
                             collect(Collectors.joining(", ")));
                     break;
                     
                 case "helicopter":
                     
-                    helicopter.add(business.createHelicopter());
-                    System.out.println("Built helicopter:"+helicopters.stream()
-                            .map(c -> c.getSerialNumber().toString())).
+                    toys.add((HelicopterToy)business.createToy(line));
+                    System.out.println("Built helicopter:"+toys.stream()
+                            .map(c -> c.toString())).
                             collect(Collectors.joining(", ")));
                     
                     break;
