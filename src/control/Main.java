@@ -3,15 +3,16 @@ package control;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.stream.Collectors;
-import toyproducts.models.CarToy;
-import toyproducts.models.HelicopterToy;
+import toyproducts.models.AmericanCarToy;
+import toyproducts.models.AmericanHelicopterToy;
 import toys.SerialNumberGenerator;
-import toys.ToyBusiness;
+import business.ToyBusiness;
+import business.branches.AmericanToyBusiness;
 
 public class Main {
 
     public static void main(String[] args) {
-        ToyBusiness business = new ToyBusiness();
+        AmericanToyBusiness business = new AmericanToyBusiness();
         ArrayList<Toy> toys = new ArrayList<>();
         
         
@@ -24,7 +25,7 @@ public class Main {
             switch (line){
                 case "car":
                     
-                    toys.add((CarToy)business.createToy(line));
+                    toys.add((AmericanCarToy)business.createToy(line));
                     System.out.println("Built cars:"+toys.stream()
                             .map(c -> c.toString())).
                             collect(Collectors.joining(", ")));
@@ -32,7 +33,7 @@ public class Main {
                     
                 case "helicopter":
                     
-                    toys.add((HelicopterToy)business.createToy(line));
+                    toys.add((AmericanHelicopterToy)business.createToy(line));
                     System.out.println("Built helicopter:"+toys.stream()
                             .map(c -> c.toString())).
                             collect(Collectors.joining(", ")));
